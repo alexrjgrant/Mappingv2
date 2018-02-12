@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Mapping.iml" filepath="$PROJECT_DIR$/Mapping.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mapping-master.iml" filepath="$PROJECT_DIR$/Mapping-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mappingv2.iml" filepath="$PROJECT_DIR$/Mappingv2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

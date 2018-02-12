@@ -13,14 +13,13 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.content.Intent;
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import android.view.View;
+
+import android.widget.Button;
+import android.widget.EditText;
 
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements View.OnClickListener
 {
 
     MapView mv;
@@ -35,7 +34,11 @@ public class MainActivity extends AppCompatActivity
         // This line sets the user agent, a requirement to download OSM maps
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
 
+
         setContentView(R.layout.activity_main);
+
+        Button b = (Button)findViewById(R.id.btnsubmit);
+        b.setOnClickListener(this);
 
         mv = (MapView)findViewById(R.id.map1);
 
@@ -43,12 +46,14 @@ public class MainActivity extends AppCompatActivity
         mv.getController().setZoom(17);
         mv.getController().setCenter(new GeoPoint(50.9085,-1.4002));
     }
+
     public boolean onCreateOptionsMenu(Menu menu)
     {
         MenuInflater inflater=getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         return true;
     }
+
     public boolean onOptionsItemSelected(MenuItem item)
     {
         if(item.getItemId() == R.id.choose_map)
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         }
         return false;
     }
+
     protected void onActivityResult(int requestCode,int resultCode,Intent intent)
     {
 
@@ -81,4 +87,22 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }
+
+    public void onClick(View view)
+    {
+        EditText edittxtlat = (EditText)findViewById(R.id.lattxt);
+        double LAT = Double.parseDouble(edittxtlat.getText().toString());
+
+        EditText edittxtlon = (EditText)findViewById(R.id.lontxt);
+        double LON = Double.parseDouble(edittxtlon.getText().toString());
+
+        mv.getController().setCenter(new GeoPoint(LAT,LON));
+    }
+
 }
+
+
+
+
+
+

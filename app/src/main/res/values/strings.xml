@@ -5,4 +5,9 @@
 <string name="hikebike_mapview">HikeBike</string>
 <string name=".choose_map_activity">dfg</string>
 <string name="selectmap">hij</string>
+    <string name="latlbl">Latitude</string>
+    <string name="lat"></string>
+    <string name="lonlbl">Longitude</string>
+    <string name="lon"></string>
+    <string name="subbtn">Submit</string>
 </resources>
