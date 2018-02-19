@@ -6,5 +6,8 @@
     <item
         android:id="@+id/choose_map"
         android:title="@string/choose_map" />
+    <item
+        android:id="@+id/setC"
+        android:title="@string/setCoordinates" />
 
 </menu>

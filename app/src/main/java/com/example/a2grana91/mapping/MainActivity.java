@@ -17,6 +17,9 @@ import org.osmdroid.views.MapView;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import android.app.ListActivity;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener
@@ -62,19 +65,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivityForResult(intent,0);
             return true;
         }
+        if(item.getItemId() == R.id.setC)
+        {
+            // react to the menu item being selected...
+            Intent intent = new Intent(this,setLonLatActivity.class);
+            startActivityForResult(intent,1);
+            return true;
+        }
         return false;
     }
 
     protected void onActivityResult(int requestCode,int resultCode,Intent intent)
     {
 
-        if(requestCode==0)
+        if(requestCode==0) // if the choose map activity is sending an Intent back
         {
 
             if (resultCode==RESULT_OK)
             {
                 Bundle extras=intent.getExtras();
-                boolean hikebikemap = extras.getBoolean("com.example.hikebikemap");
+                boolean hikebikemap = extras.getBoolean("com.example.2grana91.hikebikemap");
                 if(hikebikemap==true)
                 {
                     mv.setTileSource(TileSourceFactory.HIKEBIKEMAP);
@@ -84,7 +94,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mv.setTileSource(TileSourceFactory.MAPNIK);
                 }
             }
+
         }
+        if(requestCode==1) // if the choose map activity is sending an Intent back
+        {
+
+            if (resultCode==RESULT_OK)
+            {
+                Bundle extras=intent.getExtras();
+                double LAT = extras.getDouble("com.example.2grana91.mapping.latitude");
+                double LON = extras.getDouble("com.example.2grana91.mapping.longitude");
+                mv.getController().setCenter(new GeoPoint(LAT,LON));
+            }
+
+        }
+
     }
 
     public void onClick(View view)
@@ -97,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mv.getController().setCenter(new GeoPoint(LAT,LON));
     }
-
 }
 
 
