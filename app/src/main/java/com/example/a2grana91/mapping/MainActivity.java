@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
-        Button b = (Button)findViewById(R.id.btnsubmit);
-        b.setOnClickListener(this);
-
         mv = (MapView)findViewById(R.id.map1);
 
         mv.setBuiltInZoomControls(true);
@@ -80,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(requestCode==0) // if the choose map activity is sending an Intent back
         {
-
             if (resultCode==RESULT_OK)
             {
                 Bundle extras=intent.getExtras();
-                boolean hikebikemap = extras.getBoolean("com.example.2grana91.hikebikemap");
+                boolean hikebikemap = extras.getBoolean("hikebikemap");
+                boolean blnregular = extras.getBoolean("regmap");
                 if(hikebikemap==true)
                 {
                     mv.setTileSource(TileSourceFactory.HIKEBIKEMAP);
@@ -94,11 +91,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mv.setTileSource(TileSourceFactory.MAPNIK);
                 }
             }
-
         }
         if(requestCode==1) // if the choose map activity is sending an Intent back
         {
-
             if (resultCode==RESULT_OK)
             {
                 Bundle extras=intent.getExtras();

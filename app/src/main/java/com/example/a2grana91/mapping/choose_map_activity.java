@@ -23,14 +23,20 @@ public class choose_map_activity extends Activity implements View.OnClickListene
     {
         Intent intent = new Intent();
         Bundle bundle=new Bundle();
-        boolean hikebikemap=false;
+        boolean hikebikemap = false;
+        boolean blnregular  = false;
 
         if (v.getId()==R.id.btnHikeBikeMap)
         {
             hikebikemap=true;
         }
+        else if (v.getId()== R.id.btnRegular)
+        {
+            blnregular = true;
+        }
 
-        bundle.putBoolean("com.example.hikebikemap",hikebikemap);
+        bundle.putBoolean("hikebikemap",hikebikemap);
+        bundle.putBoolean("regmap",blnregular);
         intent.putExtras(bundle);
         setResult(RESULT_OK,intent);
         finish();
