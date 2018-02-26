@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 double LON = extras.getDouble("com.example.2grana91.mapping.longitude");
                 mv.getController().setCenter(new GeoPoint(LAT,LON));
             }
-
         }
 
     }
